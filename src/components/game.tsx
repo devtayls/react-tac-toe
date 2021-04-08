@@ -9,6 +9,7 @@ interface GameState {
 }
 
 class Game extends React.Component <any, GameState> {
+    /* The props construct*/
     constructor(props : any) {
         super(props);
         this.state = {
@@ -23,6 +24,7 @@ class Game extends React.Component <any, GameState> {
 
     }
     handleClick(i : number) {
+        console.log(i)
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
@@ -56,7 +58,7 @@ class Game extends React.Component <any, GameState> {
         const moves = history.map((step, move) => {
             const desc = move ?
                 'Got to move #' + move :
-                'Got to game start';
+                'Go to game start';
             return(
                 <li key={move}>
                     <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -78,8 +80,8 @@ class Game extends React.Component <any, GameState> {
                     />
                 </div>
                 <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
+                    <div><p data-cy='game_status'>{status}</p></div>
+                    <ol data-cy='moves_list'>{moves}</ol>
                 </div>
             </div>
         );

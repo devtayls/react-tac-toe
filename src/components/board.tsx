@@ -2,7 +2,7 @@ import * as React from "react";
 import Square from './square'
 
 interface BoardProps {
-    squares: Square
+    squares: Square,
     onClick: (i: number) => void,
 }
 
@@ -11,6 +11,7 @@ class Board extends React.Component <BoardProps, any> {
         return (
             <Square
                 value={this.props.squares[i]}
+                position={i}
                 onClick={() => this.props.onClick(i)}
             />
         );
